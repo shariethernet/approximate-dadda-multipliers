@@ -93,12 +93,14 @@
 // $_out => sum output from the mfa
 // $_czero => initial carry from outside
 \TLV lookahead_4($_czero, $_pr4, $_gr4, $_gpr, $_ggn, $_cgen, /_top)
-   /_top$_cgen[0] = /_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero);
-   /_top$_cgen[1] = /_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)));
-   /_top$_cgen[2] = /_top$_gr4[2] | (/_top$_pr4[2] & (/_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)))));
+   $cgen_0 = /_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero);
+   $cgen_1 = /_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)));
+   $cgen_2 = /_top$_gr4[2] | (/_top$_pr4[2] & (/_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)))));
+   /_top$_cgen[2:0] = {$cgen_2 , $cgen_1, $cgen_0};
    /_top$_ggn = /_top$_gr4[3] | (/_top$_pr4[3] & /_top$_gr4[2]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_gr4[1]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_pr4[1] & /_top$_gr4[0]); 
    /_top$_gpr = & (/_top$_pr4);
 
+// This has mfa and cla together in the same block
 \TLV mfa_cla_4(#_width,$_in1, $_in2, $_out, $_czero, $_cout, $_ggn, $_gpr, /_top)
    /slice[#_width-1:0]
       //$cinn = ( #slice == 0) ? /_top$_czero : $cin[#slice-1];
