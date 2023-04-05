@@ -35,7 +35,7 @@ endmodule
 
 module mfa#(parameter WIDTH = 4)(if_mfa_cla.mfa_side mif);
 genvar i;
-for(i = 0; i<WIDTH-1; i=i+1) begin
+for(i = 0; i<WIDTH; i=i+1) begin
     assign mif.pr[i] = mif.in1[i] | mif.in2[i] ;
     assign mif.gn[i] = mif.in1[i] & mif.in2[i] ;
     if(i == 0) begin 
