@@ -83,6 +83,27 @@ for(i = 0; i<WIDTH; i=i+1) begin
     end
 end
 endmodule
+
+module HA(
+    input wire a,
+    input wire b,
+    output wire sum,
+    output wire cout
+);
+assign sum = a^b;
+assign cout = a&b;
+endmodule
+
+module FA(
+    input wire a, 
+    input wire b, 
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+    assign sum = a^b^cin;
+    assign cout = (a&b) | (b&cin) | (cin&a);
+endmodule
 /*
 // 
 module app_adder#(parameter WIDTH = 4)(input logic [WIDTH-1:0] in_array, 
