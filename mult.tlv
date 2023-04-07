@@ -96,9 +96,9 @@
    $cgen_0 = /_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero);
    $cgen_1 = /_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)));
    $cgen_2 = /_top$_gr4[2] | (/_top$_pr4[2] & (/_top$_gr4[1] | (/_top$_pr4[1] & (/_top$_gr4[0] | (/_top$_pr4[0] & /_top$_czero)))));
-   /_top$_cgen[2:0] = {$cgen_2 , $cgen_1, $cgen_0};
-   /_top$_ggn = /_top$_gr4[3] | (/_top$_pr4[3] & /_top$_gr4[2]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_gr4[1]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_pr4[1] & /_top$_gr4[0]); 
-   /_top$_gpr = & (/_top$_pr4);
+   $_cgen[2:0] = {$cgen_2 , $cgen_1, $cgen_0};
+   $_ggn = /_top$_gr4[3] | (/_top$_pr4[3] & /_top$_gr4[2]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_gr4[1]) | (/_top$_pr4[3] & /_top$_pr4[2] & /_top$_pr4[1] & /_top$_gr4[0]); 
+   $_gpr = & (/_top$_pr4);
 
 // This has mfa and cla together in the same block
 \TLV mfa_cla_4(#_width,$_in1, $_in2, $_out, $_czero, $_cout, $_ggn, $_gpr, /_top)
@@ -122,7 +122,15 @@
       $cinn = ( #out_slice == 0) ? /_top$_czero : /_top$cin[#out_slice-1];
       $out = /_top$_in1[#out_slice] ^ /_top$_in2[#out_slice] ^ $cinn;
    $_out[#_width-1:0] = /out_slice[*]$out;
-   
+
+// Partial Product generation - check this
+\TLV pp_generate(#_width, $_in1, $_in2, $_out,/_top)
+   /xx[#_width-1:0]
+      /yy[#_width-1:0]
+         $out_val = /_top$_in1[xx] * /_top$_in2[yy];
+      $yy_out_val[#_width-1:0] = /yy[*]$out_val;
+   $_out[#_width-1:0] = /xx[*]$yy_out_val;
+
 \TLV
    $reset = *reset;
    m4_define(['WIDTH'],4)
@@ -132,6 +140,7 @@
    //$pr[3:0] = 0;
    //$gn[3:0] = 0;
    $initialcarry = 0;
+   //m4+pp_generate(4, $addend1, $addend2, $out, /top)
    m4+mfa_cla_4(4,$addend1, $addend2, $out, $initialcarry, $cout, $ggn, $gpr, /top)
    //m4+mfa_w(4,$addend1, $addend2, $initialcarry, $cin_from_la,$sum, $pr, $gn, /top)
    //m4+lookahead_4($initialcarry,$pr, $gr,$gpr, $ggn, $cin_from_la , /top)

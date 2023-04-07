@@ -2,3 +2,5 @@
 .vscode/
 work/
 *.wlf
+transcript
+.out

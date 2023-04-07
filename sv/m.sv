@@ -1,4 +1,4 @@
-// Code your design here
+
 interface if_mfa_cla#(parameter WIDTH = 4) (
     input logic [WIDTH-1:0] in1,
     input logic [WIDTH-1:0] in2,
@@ -21,9 +21,47 @@ interface if_mfa_cla#(parameter WIDTH = 4) (
         input pr,gn,czero,
         output cin, gpr, ggn
     );
+endinterface
 
+interface if_multiplier#(parameter WIDTH = 8)();
+    logic [WIDTH-1:0] in1;
+    logic [WIDTH-1:0] in2;
+    logic czero;
+    
+    logic [2*WIDTH:0] out;
+    logic cout;
+
+    modport mul_side(
+        input in1, in2, czero,
+        output cout, out
+    );
 
 endinterface
+/*
+// Partial Product Generation - CHECK THIS
+module partial_product#(parameter WIDTH = 8)(
+    input logic [WIDTH-1:0] in1, 
+    input logic [WIDTH-1:0] in2,
+    output logic [WIDTH-1:0][WIDTH-1:0] out
+);
+
+genvar i,j ;
+for(i=0; i<WIDTH; i=i+1) begin 
+    for(j=0; j<WIDTH; j = j+1 ) begin 
+        assign out[i][j] = in1[i] & in2[j];
+end
+end
+endmodule
+*/
+/*
+
+module multiplier#(parameter WIDTH = 8)(
+    if_multiplier.mul_side multif
+);
+
+endmodule
+*/
+// 4-Bit carry look ahead logic
 
 module cla_4(if_mfa_cla.cla_side clif);
     assign clif.gpr = & (clif.pr) ;
@@ -33,6 +71,7 @@ module cla_4(if_mfa_cla.cla_side clif);
     assign clif.cin[2] = clif.gn[2] | ( clif.pr[2] & (clif.gn[1] | ( clif.pr[1] & (clif.gn[0] | ( clif.pr[0] & clif.czero))) ));
 endmodule
 
+// Modified WIDTH-bit Full Adder 
 module mfa#(parameter WIDTH = 4)(if_mfa_cla.mfa_side mif);
 genvar i;
 for(i = 0; i<WIDTH; i=i+1) begin
@@ -45,3 +84,10 @@ for(i = 0; i<WIDTH; i=i+1) begin
     end
 end
 endmodule
+/*
+// 
+module app_adder#(parameter WIDTH = 4)(input logic [WIDTH-1:0] in_array, 
+                                        output logic  [WIDTH-1:0] out);
+
+endmodule
+*/
