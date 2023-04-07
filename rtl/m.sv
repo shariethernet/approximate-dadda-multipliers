@@ -1,4 +1,3 @@
-
 interface if_mfa_cla#(parameter WIDTH = 4) (
     input logic [WIDTH-1:0] in1,
     input logic [WIDTH-1:0] in2,

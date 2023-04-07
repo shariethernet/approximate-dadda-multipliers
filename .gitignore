@@ -4,3 +4,6 @@ work/
 *.wlf
 transcript
 .out
+t/
+build*/
+fusesoc.conf

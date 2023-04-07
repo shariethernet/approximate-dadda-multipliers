@@ -1,0 +1,47 @@
+CAPI=2:
+name : ::mult:0
+filesets:
+    tlv_rtl:
+        files:
+            - mult.tlv 
+        file_type: TLVerilogSource
+    
+    rtl:
+        files:
+            - rtl/m.sv
+        file_type: systemVerilogSource
+    
+    tb:
+        files:
+            - rtl/tb.sv
+        file_type: systemVerilogSource
+
+targets:
+    sandpiper:
+        default_tool: sandpipersaas
+        filesets: [tlv_rtl]
+        tools:
+            sandpipersaas:
+                sandpiper_saas:
+                    - --bestsv 
+                    - --inlineGen
+                    - --default_includes
+                output_dir:
+                    - "out2"
+                output_file: 
+                    - "1_mult.sv"
+        toplevel: [top]
+    
+    synth:
+        default_tool : design_compiler
+        filesets: [rtl]
+        toplevel : [mfa]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
