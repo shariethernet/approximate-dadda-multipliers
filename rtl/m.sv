@@ -25,14 +25,13 @@ endinterface
 interface if_multiplier#(parameter WIDTH = 8)();
     logic [WIDTH-1:0] in1;
     logic [WIDTH-1:0] in2;
-    logic czero;
     
     logic [2*WIDTH:0] out;
-    logic cout;
+    logic overflow;
 
     modport mul_side(
-        input in1, in2, czero,
-        output cout, out
+        input in1, in2,
+        output overflow, out
     );
 
 endinterface
@@ -104,6 +103,37 @@ module FA(
     assign sum = a^b^cin;
     assign cout = (a&b) | (b&cin) | (cin&a);
 endmodule
+
+module partial_product#(parameter WIDTH = 2)(
+    input logic [WIDTH-1:0] in1, 
+    input logic [WIDTH-1:0] in2,
+    output logic [0:WIDTH-1][WIDTH-1:0] out 
+);
+genvar i,j ;
+for(i=0; i<WIDTH; i=i+1) begin 
+    for(j=0; j<WIDTH; j = j+1 ) begin 
+        assign out[i][j] = in1[j] & in2[i];
+end
+end
+endmodule
+
+module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
+    logic [0:WIDTH-1][WIDTH-1:0] pp_out;
+    partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));
+    //  Instantiate given HA, FA blocks to generate different stages 
+    // 
+endmodule
+
+module approx1_dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
+    logic [0:WIDTH-1][WIDTH-1:0] pp_out;
+    partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));
+    //  Instantiate given HA, FA blocks to generate different stages 
+    // 
+endmodule
+
+// Each approximate dadda will have different config of approx FA for different stages and also
+// vary in span of the LSB
+
 /*
 // 
 module app_adder#(parameter WIDTH = 4)(input logic [WIDTH-1:0] in_array, 
