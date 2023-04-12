@@ -117,12 +117,21 @@ end
 end
 endmodule
 
+// create module for Approximate Full Adder
+// What type of approximate FA -> We have to decide
+
 module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     logic [0:WIDTH-1][WIDTH-1:0] pp_out;
     partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));
     //  Instantiate given HA, FA blocks to generate different stages 
     // 
 endmodule
+
+// module dadda_16
+
+// module dadda_32
+
+// module dadda#(parameter WIDTH=8)
 
 module approx1_dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     logic [0:WIDTH-1][WIDTH-1:0] pp_out;
