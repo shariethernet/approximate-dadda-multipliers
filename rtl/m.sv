@@ -143,12 +143,7 @@ module f_cla_16#(parameter WIDTH=16)(if_cla_adder.dut_side fclif);
     assign fclif.cout = (fclif.czero & fgpr) | fggn;
 endmodule
 
-module f_cla_32#(parameter WIDTH=32)(if_cla_adder.dut_side fclif32);
-    if_cla_adder#(16) if_cla_adder_inst1(.in1(fclif32.in1[15:0]),.in2(fclif32.in2[15:0]), .czero(fclif32.czero), .sum(fclif32.sum[15:0]), .cout(fclif32.cout));
-    f_cla_16 cla16_1(.fclif(if_cla_adder_inst1));
-    if_cla_adder#(16) if_cla_adder_inst2(.in1(fclif32.in1[31:16]),.in2(fclif32.in2[31:16]), .czero(), .sum(fclif32.sum[31:16]), .cout(fclif32.cout));
-    f_cla_16 cla16_1(.fclif(if_cla_adder_inst2));
-endmodule
+
 
 module HA(
     input wire a,
