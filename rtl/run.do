@@ -5,8 +5,8 @@ if [file exists work] {
 vlib work
 
 # Compile the sources.
-vlog -sv m.sv tb.sv
-
+#vlog -sv m.sv tb.sv
+vlog -sv cla_w.sv
 #vlog +cover -sv tb.sv
 
 #coverage -assert -directive -cvg -codeAll

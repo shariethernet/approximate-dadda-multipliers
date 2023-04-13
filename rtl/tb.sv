@@ -14,7 +14,7 @@ module tb;
     mfa#(.WIDTH(4)) mfa_inst(.mif(if_mfa_cla_inst));
 */
 
-    if_cla_adder if_cla_adder_inst();
+    if_cla_adder#(16) if_cla_adder_inst();
 
     f_cla_16 uut(.fclif(if_cla_adder_inst));
 

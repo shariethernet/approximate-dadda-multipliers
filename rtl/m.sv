@@ -36,11 +36,11 @@ interface if_multiplier#(parameter WIDTH = 8)();
 
 endinterface
 
-interface if_cla_adder#(parameter WIDTH = 16)();
-    logic [WIDTH-1:0] in1, in2;
-    logic czero;
-    logic [WIDTH-1:0] sum;
-    logic cout;
+interface if_cla_adder#(WIDTH)(
+    input logic [WIDTH-1:0] in1, in2,
+    input logic czero
+    output logic [WIDTH-1:0] sum
+    output logic cout);
 
     modport dut_side(
         input in1, in2, czero,
@@ -143,6 +143,13 @@ module f_cla_16#(parameter WIDTH=16)(if_cla_adder.dut_side fclif);
     assign fclif.cout = (fclif.czero & fgpr) | fggn;
 endmodule
 
+module f_cla_32#(parameter WIDTH=32)(if_cla_adder.dut_side fclif32);
+    if_cla_adder#(16) if_cla_adder_inst1(.in1(fclif32.in1[15:0]),.in2(fclif32.in2[15:0]), .czero(fclif32.czero), .sum(fclif32.sum[15:0]), .cout(fclif32.cout));
+    f_cla_16 cla16_1(.fclif(if_cla_adder_inst1));
+    if_cla_adder#(16) if_cla_adder_inst2(.in1(fclif32.in1[31:16]),.in2(fclif32.in2[31:16]), .czero(), .sum(fclif32.sum[31:16]), .cout(fclif32.cout));
+    f_cla_16 cla16_1(.fclif(if_cla_adder_inst2));
+endmodule
+
 module HA(
     input wire a,
     input wire b,
@@ -179,7 +186,7 @@ endmodule
 
 // create module for Approximate Full Adder
 // What type of approximate FA -> We have to decide
-
+/*
 module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     logic [0:WIDTH-1][WIDTH-1:0] pp_out;
     partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));
@@ -279,7 +286,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     
 endmodule
 
-
+*/
 // module dadda_16
 
 // module dadda_32
