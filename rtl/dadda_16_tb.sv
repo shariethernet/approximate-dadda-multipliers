@@ -1,4 +1,5 @@
 // Testbench template
+<<<<<<< HEAD
 module tb(if_multiplier.tb_side tbif);
 parameter WIDTH = 16;
 initial begin 
@@ -22,4 +23,6 @@ module tb_top;
 if_multiplier#(16) if_multiplier_inst();
 dadda_16 dadda_16_dut(.muif(if_multiplier_inst));
 tb tb_inst(.tbif(if_multiplier_inst));
+=======
+
 endmodule
