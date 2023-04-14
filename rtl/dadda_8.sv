@@ -52,7 +52,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     FA S4_FA8(st3out8, st3cout7, st2cout13, st4out9, st4cout9);
     FA S4_FA9(st3out9, st3cout8, st2cout14, st4out10, st4cout10);
     FA S4_FA10(st3out10, st3cout9, pp_out[7][5], st4out11, st4cout11);
-    FA S4_FA10(pp_out[6][7], st3cout10, pp_out[7][6], st4out12, st4cout12);
+    FA S4_FA11(pp_out[6][7], st3cout10, pp_out[7][6], st4out12, st4cout12);
 
     // 14 bit CLA
     parameter CLA_WIDTH = 16;
