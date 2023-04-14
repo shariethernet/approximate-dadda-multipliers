@@ -63,45 +63,45 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     wire cout1;
 
     assign in1[CLA_WIDTH-1] = 0'b0; 
-    assign in1[CLA_WIDTH-2] = 0'b0; 
-    assign in1[CLA_WIDTH-3] = pp_out[7][7];
-    assign in1[CLA_WIDTH-4] = st4out12;
-    assign in1[CLA_WIDTH-5] = st4out11;
-    assign in1[CLA_WIDTH-6] = st4out10;
-    assign in1[CLA_WIDTH-7] = st4out9;
-    assign in1[CLA_WIDTH-8] = st4out8;
-    assign in1[CLA_WIDTH-9] = st4out7;
-    assign in1[CLA_WIDTH-10] = st4out6;
-    assign in1[CLA_WIDTH-11] = st4out5;
-    assign in1[CLA_WIDTH-12] = st4out4;
-    assign in1[CLA_WIDTH-13] = st4out3;
-    assign in1[CLA_WIDTH-14] = st4out2;
-    assign in1[CLA_WIDTH-15] = st4out1;
-    assign in1[CLA_WIDTH-16] = pp_out[0][1];
+    assign in1[CLA_WIDTH-2] = pp_out[7][7];
+    assign in1[CLA_WIDTH-3] = st4out12;
+    assign in1[CLA_WIDTH-4] = st4out11;
+    assign in1[CLA_WIDTH-5] = st4out10;
+    assign in1[CLA_WIDTH-6] = st4out9;
+    assign in1[CLA_WIDTH-7] = st4out8;
+    assign in1[CLA_WIDTH-8] = st4out7;
+    assign in1[CLA_WIDTH-9] = st4out6;
+    assign in1[CLA_WIDTH-10] = st4out5;
+    assign in1[CLA_WIDTH-11] = st4out4;
+    assign in1[CLA_WIDTH-12] = st4out3;
+    assign in1[CLA_WIDTH-13] = st4out2;
+    assign in1[CLA_WIDTH-14] = st4out1;
+    assign in1[CLA_WIDTH-15] = pp_out[0][1];
+    assign in1[CLA_WIDTH-16] = pp_out[0][0];
 
 
     assign in2[CLA_WIDTH-1] = 0'b0; 
-    assign in2[CLA_WIDTH-2] = 0'b0; 
-    assign in2[CLA_WIDTH-3] = st4cout12; 
-    assign in2[CLA_WIDTH-4] = st4cout11;
-    assign in2[CLA_WIDTH-5] = st4cout10;
-    assign in2[CLA_WIDTH-6] = st4cout9;
-    assign in2[CLA_WIDTH-7] = st4cout8;
-    assign in2[CLA_WIDTH-8] = st4cout7;
-    assign in2[CLA_WIDTH-9] = st4cout6;
-    assign in2[CLA_WIDTH-10] = st4cout5;
-    assign in2[CLA_WIDTH-11] = st4cout4;
-    assign in2[CLA_WIDTH-12] = st4cout3;
-    assign in2[CLA_WIDTH-13] = st4cout2;
-    assign in2[CLA_WIDTH-14] = st4cout1;
-    assign in2[CLA_WIDTH-15] = pp_out[2][0];
-    assign in2[CLA_WIDTH-16] = pp_out[1][0];
+    assign in2[CLA_WIDTH-2] = st4cout12; 
+    assign in2[CLA_WIDTH-3] = st4cout11;
+    assign in2[CLA_WIDTH-4] = st4cout10;
+    assign in2[CLA_WIDTH-5] = st4cout9;
+    assign in2[CLA_WIDTH-6] = st4cout8;
+    assign in2[CLA_WIDTH-7] = st4cout7;
+    assign in2[CLA_WIDTH-8] = st4cout6;
+    assign in2[CLA_WIDTH-9] = st4cout5;
+    assign in2[CLA_WIDTH-10] = st4cout4;
+    assign in2[CLA_WIDTH-11] = st4cout3;
+    assign in2[CLA_WIDTH-12] = st4cout2;
+    assign in2[CLA_WIDTH-13] = st4cout1;
+    assign in2[CLA_WIDTH-14] = pp_out[2][0];
+    assign in2[CLA_WIDTH-15] = pp_out[1][0];
+    assign in2[CLA_WIDTH-16] = 0'b0; 
 
     if_cla_adder#(16) if_cla_adder_inst(.in1(in1), .in2(in2),.czero(czero), .sum(out), .cout(cout1));
 
     f_cla_16 uut(.fclif(if_cla_adder_inst));
 
-    assign muif.out = out[14-1:0];
-    assign muif.overflow = out[14];
+    assign muif.out = out[15-1:0];
+    assign muif.overflow = out[15];
     
 endmodule
