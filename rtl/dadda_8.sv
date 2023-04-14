@@ -4,12 +4,12 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));
     //  Instantiate given HA, FA blocks to generate different stages 
     // stage 1 sum and carry 3 FA and 3 HA adders
-    HA S1_HA1(pp_out[0][5], pp_out[1][4], st1out1, st1cout1);
-    FA S1_FA1(pp_out[0][6], pp_out[1][5], pp_out[2][4], st1out2, st1cout2);
-    HA S1_HA2(pp_out[3][3], pp_out[4][2], st1out5, st1cout5);
-    FA S1_FA2(pp_out[0][7], pp_out[1][6], pp_out[2][5], st1out3, st1cout3);
-    HA S1_HA3(pp_out[3][4], pp_out[4][3], st1out6, st1cout6);
-    FA S1_FA3(pp_out[1][7], pp_out[2][6], pp_out[3][5], st1out4, st1cout4);
+    HA S1_HA1(pp_out[0][6], pp_out[1][5], st1out1, st1cout1);
+    FA S1_FA1(pp_out[0][7], pp_out[1][6], pp_out[2][5], st1out2, st1cout2);
+    HA S1_HA2(pp_out[3][4], pp_out[4][3], st1out5, st1cout5);
+    FA S1_FA2(pp_out[1][7], pp_out[2][6], pp_out[3][5], st1out3, st1cout3);
+    HA S1_HA3(pp_out[4][4], pp_out[5][3], st1out6, st1cout6);
+    FA S1_FA3(pp_out[2][7], pp_out[3][6], pp_out[4][5], st1out4, st1cout4);
 
     // Stage 2
     HA S2_HA1(pp_out[0][4], pp_out[1][3], st2out1, st2cout1);
@@ -64,7 +64,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     assign in1[CLA_WIDTH-1] = 0'b0; 
     assign in1[CLA_WIDTH-2] = 0'b0; 
-    assign in1[CLA_WIDTH-3] = pp_out[7][7]; 
+    assign in1[CLA_WIDTH-3] = pp_out[7][7];
     assign in1[CLA_WIDTH-4] = st4out12;
     assign in1[CLA_WIDTH-5] = st4out11;
     assign in1[CLA_WIDTH-6] = st4out10;
