@@ -1,3 +1,34 @@
+interface if_multiplier#(parameter WIDTH = 8)();
+    logic [WIDTH-1:0] in1;
+    logic [WIDTH-1:0] in2;
+    
+    logic [2*WIDTH:0] out;
+    logic overflow;
+
+    modport mul_side(
+        input in1, in2,
+        output overflow, out
+    );
+
+endinterface
+
+interface if_cla_adder#(WIDTH)(
+    input logic [WIDTH-1:0] in1, in2,
+    input logic czero
+    output logic [WIDTH-1:0] sum
+    output logic cout);
+
+    modport dut_side(
+        input in1, in2, czero,
+        output sum, cout
+    );
+
+    modport tb_side(
+        input in1, in2, czero,
+        input sum, cout
+    );
+endinterface
+
 // Modified WIDTH-bit Full Adder 
 module mfa#(parameter WIDTH = 4)(if_mfa_cla.mfa_side mif);
 genvar i;
@@ -180,9 +211,11 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // 14 bit CLA
     parameter CLA_WIDTH = 16;
-    logic [CLA_WIDTH-1:0] in1;
-    logic [CLA_WIDTH-1:0] in2;
-    logic czero;
+    wire [CLA_WIDTH-1:0] in1;
+    wire [CLA_WIDTH-1:0] in2;
+    wire czero;
+    wire [CLA_WIDTH-1:0] out;
+    wire cout1;
 
     assign in1[CLA_WIDTH-1] = 0'b0; 
     assign in1[CLA_WIDTH-2] = 0'b0; 
@@ -219,8 +252,11 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     assign in2[CLA_WIDTH-15] = pp_out[2][0];
     assign in2[CLA_WIDTH-16] = pp_out[1][0];
 
-    if_cla_adder#(16) if_cla_adder_inst(.in1(in1), .in2(in2),.czero(czero), .sum(muif.out), .cout(muif.overflow));
+    if_cla_adder#(16) if_cla_adder_inst(.in1(in1), .in2(in2),.czero(czero), .sum(out), .cout(cout1));
 
     f_cla_16 uut(.fclif(if_cla_adder_inst));
+
+    assign muif.out = out[14-1:0];
+    assign muif.overflow = out[14];
     
 endmodule
