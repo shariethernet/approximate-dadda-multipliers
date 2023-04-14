@@ -107,8 +107,8 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
     //17
     FA fa2_26(.a(s1[9]), .b(s1[10]), .cin(c1[6]), .sum(s2[26]), .cout(c2[26]));
     FA fa2_27(.a(c1[7]), .b(pp[9][10]), .cin(c1[8]), .sum(s2[27]), .cout(c2[27]));
-    FA fa2_28(.a(pp[8][11]), .b(pp[7][12]), .cin(pp[6][13]), .sum(s2[28]), .cout(c2[28]));
-    FA fa2_29(.a(pp[5][14]), .b(pp[4][15]), .cin(pp[3][16]), .sum(s2[29]), .cout(c2[29]));
+    FA fa2_28(.a(pp[8][9]), .b(pp[7][10]), .cin(pp[6][11]), .sum(s2[28]), .cout(c2[28]));
+    FA fa2_29(.a(pp[5][12]), .b(pp[4][13]), .cin(pp[3][14]), .sum(s2[29]), .cout(c2[29]));
 
     //18
     FA fa2_30(.a(s1[11]), .b(c1[9]), .cin(c1[10]), .sum(s2[30]), .cout(c2[30]));
