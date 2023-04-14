@@ -460,9 +460,10 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
     assign cla_in2 = {1'b0, c6[27], c6[26], c6[25], c6[24], c6[23], c6[22], c6[21], 
                 c6[20], c6[19], c6[18], c6[17], c6[16], c6[15], c6[14], c6[13], 
                 c6[12], c6[11], c6[10], c6[9], c6[8], c6[7], c6[6], c6[5], 
-                c6[4], c6[3], c6[2], c6[1], c6[0], pp[0][1], 1'b0};
+                c6[4], c6[3], c6[2], c6[1], c6[0], pp[0][2], pp[0][1], 1'b0};
 
 //32 bit cla adder
+
 
     assign mul_if.out = add_result;
 
