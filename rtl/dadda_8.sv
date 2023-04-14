@@ -58,7 +58,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     parameter CLA_WIDTH = 16;
     wire [CLA_WIDTH-1:0] in1;
     wire [CLA_WIDTH-1:0] in2;
-    wire czero;
+    wire czero = 0;
     wire [CLA_WIDTH-1:0] out;
     wire cout1;
 
