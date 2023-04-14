@@ -450,6 +450,7 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
     FA fa2_27 (.a(pp[15][14]), .b(c5[25]), .cin(pp[14][15]), .sum(s6[27]), .cout(c6[27]));
 
     wire [31:0] cla_in1, cla_in2;
+    wire [31:0] add_result;
 
     assign cla_in1 = {1'b0, pp[15][15], s6[27], s6[26], s6[25], s6[24], s6[23], s6[22], 
                 s6[21], s6[20], s6[19], s6[18], s6[17], s6[16], s6[15], s6[14], 
@@ -460,5 +461,10 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
                 c6[20], c6[19], c6[18], c6[17], c6[16], c6[15], c6[14], c6[13], 
                 c6[12], c6[11], c6[10], c6[9], c6[8], c6[7], c6[6], c6[5], 
                 c6[4], c6[3], c6[2], c6[1], c6[0], pp[0][1], 1'b0};
+
+//32 bit cla adder
+
+    assign mul_if.out = add_result;
+
 
 endmodule
