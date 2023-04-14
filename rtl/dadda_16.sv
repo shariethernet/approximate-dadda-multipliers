@@ -26,7 +26,7 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
     genvar i,j ;
     for(i=0; i<WIDTH; i=i+1) begin 
         for(j=0; j<WIDTH; j = j+1 ) begin 
-            assign pp[j][i] = in1[j] & in2[i];
+            assign pp[j][i] = muif.in1[j] & muif.in2[i];
         end
     end
 
@@ -465,7 +465,7 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
 //32 bit cla adder
 
 
-    assign mul_if.out = add_result;
+    assign muif.out = add_result;
 
 
 endmodule
