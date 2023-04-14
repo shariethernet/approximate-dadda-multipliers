@@ -31,12 +31,17 @@ interface if_multiplier#(parameter WIDTH = 8)();
         input in1, in2,
         output overflow, out
     );
+
+    modport tb_side(
+        output in1, in2, 
+        input overflow, out
+    );
 endinterface
 
 interface if_cla_adder#(WIDTH)(
     input logic [WIDTH-1:0] in1, in2,
-    input logic czero
-    output logic [WIDTH-1:0] sum
+    input logic czero,
+    output logic [WIDTH-1:0] sum,
     output logic cout);
 
     modport dut_side(
