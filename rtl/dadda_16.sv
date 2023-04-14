@@ -465,7 +465,7 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
 //32 bit cla adder
 
 
-    assign mul_if.out = add_result;
+    assign muif.out = add_result;
 
 
 endmodule
