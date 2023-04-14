@@ -10,7 +10,6 @@ interface if_mfa_cla#(parameter WIDTH = 4) (
     logic [WIDTH-1:0] gn;
     logic [WIDTH-2:0] cin;
 
-
     modport mfa_side(
         input in1, in2, czero, cin,
         output sum, pr, gn
@@ -25,7 +24,6 @@ endinterface
 interface if_multiplier#(parameter WIDTH = 8)();
     logic [WIDTH-1:0] in1;
     logic [WIDTH-1:0] in2;
-    
     logic [2*WIDTH:0] out;
     logic overflow;
 
