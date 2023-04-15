@@ -1,9 +1,9 @@
 // Testbench template
 module tb(if_multiplier.tb_side tbif);
-parameter WIDTH = 6;
+parameter WIDTH = 4;
 initial begin 
-    tbif.in1 = 6'h3f;
-    tbif.in2 = 6'h1;
+    tbif.in1 = 4'h2;
+    tbif.in2 = 4'h3;
     $monitor("[%0t] in1 = %d, in2 = %d, prod = %d, overflow = %d", $time,  tbif.in1, 
                                                     tbif.in2, tbif.out, tbif.overflow);
     $dumpfile("test1.vcd");
@@ -19,7 +19,7 @@ end
 endmodule
 
 module tb_top;
-if_multiplier#(6) if_multiplier_inst();
-dadda_6 dadda_6_dut(.muif(if_multiplier_inst));
+if_multiplier#(4) if_multiplier_inst();
+dadda_4 dadda_4_dut(.muif(if_multiplier_inst));
 tb tb_inst(.tbif(if_multiplier_inst));
 endmodule
