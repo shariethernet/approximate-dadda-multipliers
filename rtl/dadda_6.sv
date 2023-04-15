@@ -10,7 +10,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     FA S1_FA3(pp_out[2][5], pp_out[3][4], pp_out[4][3], st1out4, st1cout4);
 
     HA S1_HA2(pp_out[3][2], pp_out[4][1], st1out5, st1cout5);
-    HA S1_HA3(pp_out[4][2], pp_out[3][1], st1out6, st1cout6);
+    HA S1_HA3(pp_out[4][2], pp_out[5][1], st1out6, st1cout6);
 
     // Stage 2
     HA S2_HA1(pp_out[0][3], pp_out[1][2], st2out1, st2cout1);
@@ -18,7 +18,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     FA S2_FA2(st1out2, st2cout1, st1out5, st2out3, st2cout3);
     FA S2_FA3(st1out3, st2cout2, st1out6, st2out4, st2cout4);
     FA S2_FA4(st1out4, st2cout3, pp_out[5][2], st2out5, st2cout5);
-    FA S2_FA5(pp_out[4][5], st2cout4, pp_out[5][4], st2out6, st2cout6);
+    FA S2_FA5(pp_out[3][5], st2cout4, pp_out[4][4], st2out6, st2cout6);
 
     // Stage 3
     HA S3_HA1(pp_out[0][2], pp_out[1][1], st3out1, st3cout1);
@@ -37,7 +37,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     wire [CLA_WIDTH-1:0] out;
     wire cout1;
 
-    assign in1[CLA_WIDTH-1] = pp_out[7][7];
+    assign in1[CLA_WIDTH-1] = pp_out[5][5]
     assign in1[CLA_WIDTH-2] = st3out1;
     assign in1[CLA_WIDTH-3] = st3out2;
     assign in1[CLA_WIDTH-4] = st3out3;
@@ -63,7 +63,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
 
     wire zero;
     assign zero = 1'b0;
-    cla_w#(.WIDTH(11)) cla_dut(.in1(in1),.in2(in2),.sum(muif.out),.czero(zero),.cout(muif.overflow));
-
+    cla_w#(.WIDTH(11)) cla_dut(.in1(in1),.in2(in2),.sum(muif.out),.czero(zero),.cout(zero));
+    assign muif.overflow = zero;
     
 endmodule
