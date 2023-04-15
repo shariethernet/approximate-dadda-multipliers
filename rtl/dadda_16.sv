@@ -253,7 +253,7 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
 
     //column 8
     FA fa4_7(.a(s3[3]), .b(c3[1]), .cin(s3[4]), .sum(s4[7]), .cout(c4[7]));
-    FA fa4_8(.a(c3[2]), .b(s3[5]), .cin(pp[8][0]), .sum(s4[8]), .cout(c4[8]));
+    FA fa4_8(.a(c3[2]), .b(s3[5]), .cin(pp[0][8]), .sum(s4[8]), .cout(c4[8]));
 
     //column 9
     FA fa4_9(.a(s3[6]), .b(c3[3]), .cin(s3[7]), .sum(s4[9]), .cout(c4[9]));
