@@ -37,7 +37,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     wire [CLA_WIDTH-1:0] out;
     wire cout1;
 
-    assign in1[CLA_WIDTH-1] = pp_out[7][7]
+    assign in1[CLA_WIDTH-1] = pp_out[7][7];
     assign in1[CLA_WIDTH-2] = st3out1;
     assign in1[CLA_WIDTH-3] = st3out2;
     assign in1[CLA_WIDTH-4] = st3out3;
@@ -63,7 +63,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
 
     wire zero;
     assign zero = 1'b0;
-    cla_w#(.WIDTH(7)) cla_dut(.in1(in1),.in2(in2),.sum(muif.out),.czero(zero),.cout(zero));
-    assign muif.overflow = zero;
+    cla_w#(.WIDTH(11)) cla_dut(.in1(in1),.in2(in2),.sum(muif.out),.czero(zero),.cout(muif.overflow));
+
     
 endmodule
