@@ -22,7 +22,7 @@ module dadda_4#(parameter WIDTH = 4)(if_multiplier.mul_side muif);
     wire [CLA_WIDTH-1:0] out;
     wire cout1;
 
-    assign in1[CLA_WIDTH-1] = pp_out[7][7]
+    assign in1[CLA_WIDTH-1] = pp_out[3][3]
     assign in1[CLA_WIDTH-2] = st2out1;
     assign in1[CLA_WIDTH-3] = st2out2;
     assign in1[CLA_WIDTH-4] = st2out3;
