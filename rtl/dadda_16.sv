@@ -465,8 +465,8 @@ module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
 //32 bit cla adder
     wire zero;
     assign zero = 1'b0;
-    cla_w#(.WIDTH(32)) cla_dut(.in1(cla_in1),.in2(cla_in2),.sum(muif.out),.czero(zero),.cout(zero));
-    assign muif.overflow = zero;
+    cla_w#(.WIDTH(32)) cla_dut(.in1(cla_in1),.in2(cla_in2),.sum(muif.out),.czero(zero),.cout(muif.overflow));
+
     initial begin 
     $strobe("cla_in1 = %b, cla_in2 = %b",cla_in1,cla_in2);
     end

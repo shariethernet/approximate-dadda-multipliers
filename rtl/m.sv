@@ -136,16 +136,6 @@ assign cout = a&b;
 endmodule
 
 // Accurate FA
-module FA(
-    input wire a, 
-    input wire b, 
-    input wire cin,
-    output wire sum,
-    output wire cout
-);
-    assign sum = a^b^cin;
-    assign cout = (a&b) | (b&cin) | (cin&a);
-endmodule
 
 // Partial Product Generation
 module partial_product#(parameter WIDTH = 2)(
@@ -161,6 +151,7 @@ end
 end
 endmodule
 
+/*
 
 // Based off of https://ieeexplore.ieee.org/document/8843644
 module App_FA1(
@@ -171,7 +162,7 @@ module App_FA1(
     output wire cout
 );
     assign cout = (a&b) | cin;
-    assign sum = cout;
+    assign sum = ~cout;
 endmodule
 
 module App_FA2(
@@ -182,7 +173,7 @@ module App_FA2(
     output wire cout
 );
     assign cout = (a&cin) | b;
-    assign sum = cout;
+    assign sum = ~cout;
 endmodule
 
 module App_FA3(
@@ -193,7 +184,7 @@ module App_FA3(
     output wire cout
 );
     assign cout = (a&b) ^ cin;
-    assign sum = cout;
+    assign sum = ~cout;
 endmodule
 
 module App_FA4(
@@ -204,5 +195,6 @@ module App_FA4(
     output wire cout
 );
     assign cout = (a&b) | (b&cin) | (cin&a);
-    assign sum = cout;
+    assign sum = ~cout;
 endmodule
+*/
