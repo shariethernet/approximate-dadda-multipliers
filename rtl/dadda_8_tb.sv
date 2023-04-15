@@ -2,8 +2,8 @@
 module tb(if_multiplier.tb_side tbif);
     parameter WIDTH = 8;
     initial begin 
-        tbif.in1 = 2;
-        tbif.in2 = 4;
+        tbif.in1 = 8'hf;
+        tbif.in2 = 8'hf;
         $monitor("[%0t] in1 = %d, in2 = %d, prod = %d, overflow = %d", $time,  tbif.in1, 
                                                         tbif.in2, tbif.out, tbif.overflow);
         $dumpfile("test1.vcd");
