@@ -62,7 +62,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     wire [CLA_WIDTH-1:0] out;
     wire cout1;
 
-    assign in1[CLA_WIDTH-1] = 0'b0; 
+    assign in1[CLA_WIDTH-1] = 1'b0; 
     assign in1[CLA_WIDTH-2] = pp_out[7][7];
     assign in1[CLA_WIDTH-3] = st4out12;
     assign in1[CLA_WIDTH-4] = st4out11;
@@ -80,7 +80,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     assign in1[CLA_WIDTH-16] = pp_out[0][0];
 
 
-    assign in2[CLA_WIDTH-1] = 0'b0; 
+    assign in2[CLA_WIDTH-1] = 1'b0; 
     assign in2[CLA_WIDTH-2] = st4cout12; 
     assign in2[CLA_WIDTH-3] = st4cout11;
     assign in2[CLA_WIDTH-4] = st4cout10;
@@ -95,7 +95,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     assign in2[CLA_WIDTH-13] = st4cout1;
     assign in2[CLA_WIDTH-14] = pp_out[2][0];
     assign in2[CLA_WIDTH-15] = pp_out[1][0];
-    assign in2[CLA_WIDTH-16] = 0'b0; 
+    assign in2[CLA_WIDTH-16] = 1'b0; 
 
     if_cla_adder#(16) if_cla_adder_inst(.in1(in1), .in2(in2),.czero(czero), .sum(out), .cout(cout1));
 
