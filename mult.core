@@ -16,13 +16,155 @@ filesets:
         files:
             - rtl/dadda_8.sv
         file_type: systemVerilogSource
+
+     app2_da_8_LFA:
+        files:
+            - rtl/dadda_8_LFA.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_8_LS:
+        files:
+            - rtl/dadda_8_LS.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_8_MFA:
+        files:
+            - rtl/dadda_8_MFA.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_8_LSB:
+        files:
+            - rtl/dadda_8_LSB.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app3_da_8_LFA:
+        files:
+            - rtl/dadda_8_LFA.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_8_LS:
+        files:
+            - rtl/dadda_8_LS.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_8_MFA:
+        files:
+            - rtl/dadda_8_MFA.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_8_LSB:
+        files:
+            - rtl/dadda_8_LSB.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app4_da_8_LFA:
+        files:
+            - rtl/dadda_8_LFA.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_8_LS:
+        files:
+            - rtl/dadda_8_LS.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_8_MFA:
+        files:
+            - rtl/dadda_8_MFA.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_8_LSB:
+        files:
+            - rtl/dadda_8_LSB.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
     
     acc_da_16:
         files:
             - rtl/dadda_16.sv
         file_type: systemVerilogSource
     
-    
+      app2_da_16_LFA:
+        files:
+            - rtl/dadda_16_LFA.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_16_LS:
+        files:
+            - rtl/dadda_16_LS.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_16_MFA:
+        files:
+            - rtl/dadda_16_MFA.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app2_da_16_LSB:
+        files:
+            - rtl/dadda_16_LSB.sv
+            - rtl/app_fa2.sv
+        file_type: systemVerilogSource
+
+     app3_da_16_LFA:
+        files:
+            - rtl/dadda_16_LFA.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_16_LS:
+        files:
+            - rtl/dadda_16_LS.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_16_MFA:
+        files:
+            - rtl/dadda_16_MFA.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app3_da_16_LSB:
+        files:
+            - rtl/dadda_16_LSB.sv
+            - rtl/app_fa3.sv
+        file_type: systemVerilogSource
+
+     app4_da_16_LFA:
+        files:
+            - rtl/dadda_16_LFA.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_16_LS:
+        files:
+            - rtl/dadda_16_LS.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_16_MFA:
+        files:
+            - rtl/dadda_16_MFA.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource
+
+     app4_da_16_LSB:
+        files:
+            - rtl/dadda_16_LSB.sv
+            - rtl/app_fa4.sv
+        file_type: systemVerilogSource   
     
     tb:
         files:
@@ -57,4 +199,337 @@ targets:
             jobs: 1
             target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
             libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+    s_dadda_16:
+        default_tool : design_compiler
+        filesets: [rtl_lib, acc_da_16]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+    s_app2_da_8_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_8_LFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
   
+      s_app2_da_8_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_8_LS]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app2_da_8_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_8_MFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app2_da_8_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_8_LSB]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+
+    s_app3_da_8_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_8_LFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
+      s_app3_da_8_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_8_LS]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app3_da_8_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_8_MFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app3_da_8_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_8_LSB]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+    s_app4_da_8_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_8_LFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
+      s_app4_da_8_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_8_LS]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app4_da_8_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_8_MFA]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app4_da_8_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_8_LSB]
+        toplevel : [dadda_8]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+    s_app2_da_16_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_16_LFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
+      s_app2_da_16_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_16_LS]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app2_da_16_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_16_MFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app2_da_16_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app2_da_16_LSB]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+
+    s_app3_da_16_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_16_LFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
+      s_app3_da_16_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_16_LS]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app3_da_16_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_16_MFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app3_da_16_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app3_da_16_LSB]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+
+    s_app4_da_16_LFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_16_LFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+  
+      s_app4_da_16_LS:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_16_LS]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app4_da_16_MFA:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_16_MFA]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+
+      s_app4_da_16_LSB:
+        default_tool : design_compiler
+        filesets: [rtl_lib, app4_da_16_LSB]
+        toplevel : [dadda_16]
+        tools:
+          design_compiler: 
+            script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
+            dc_script:  "synth.tcl"
+            report_dir: "report"
+            jobs: 1
+            target_library: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
+            libs: "/home/unga/shg/work/FreePDK45/osu_soc/lib/files/gscl45nm.db"
