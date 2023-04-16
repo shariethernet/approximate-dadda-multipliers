@@ -3,10 +3,10 @@
 module tb(if_multiplier.tb_side tbif);
 parameter WIDTH = 16;
 initial begin 
-    tbif.in1 = 16'hf;
-    tbif.in2 = 16'hf;
-    $monitor("[%0t] in1 = %d, in2 = %d, prod = %b, overflow = %d", $time,  tbif.in1, 
-                                                    tbif.in2, tbif.out, tbif.overflow);
+    tbif.in1 = 16'hfff;
+    tbif.in2 = 16'hfff;
+    $monitor("[%0t] in1 = %d, in2 = %d, prod = %b , prod [hex] = %0x, overflow = %d", $time,  tbif.in1, 
+                                                    tbif.in2, tbif.out, tbif.out, tbif.overflow);
     $dumpfile("test1.vcd");
     $dumpvars;
     #10
