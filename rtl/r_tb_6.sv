@@ -1,4 +1,4 @@
-class RandomInputs#(int WIDTH = 8, int limit = 255);
+class RandomInputs#(int WIDTH = 6, int limit = 2047);
   rand logic [WIDTH-1:0] in1;
   rand logic [WIDTH-1:0] in2;
 
@@ -13,8 +13,8 @@ endclass
 
 
 module tb_top;
-if_multiplier#(8) if_multiplier_inst();
-dadda_8 dadda_8_dut(.muif(if_multiplier_inst));
+if_multiplier#(6) if_multiplier_inst();
+dadda_6 dadda_6_dut(.muif(if_multiplier_inst));
 tb tb_inst(.tbif(if_multiplier_inst));
 endmodule
 
@@ -22,9 +22,8 @@ endmodule
 
 
 
-module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
+module tb #(parameter WIDTH = 6)(if_multiplier.tb_side tbif);
   // Parameters
-  parameter limit = 100; // Set the limit for in1*in2
   parameter int seed = 12345; // Set the seed for randomization
   parameter int NUM_TESTS = 10; // Number of test iterations to run
   integer fd;
@@ -34,8 +33,8 @@ module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
   real actual;
   logic [WIDTH-1:0] in1=0;
   logic [WIDTH-1:0] in2=0;
-  logic [2*WIDTH-1:0] in1_16;
-  logic [2*WIDTH-1:0] in2_16;
+  logic [2*WIDTH-1:0] in1_12;
+  logic [2*WIDTH-1:0] in2_12;
   logic [2*WIDTH-1:0] design_out;
   initial begin
     random_inputs = new();
@@ -47,8 +46,8 @@ module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
       tbif.in1 = in1;
       tbif.in2 = in2;
 
-      in1_16 = {8'b0,in1};
-      in2_16 = {8'b0,in2};
+      in1_12 = {6'b0,in1};
+      in2_12 = {6'b0,in2};
 
       #1
       design_out = tbif.out;  
@@ -59,7 +58,7 @@ module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
       // Evaluate output
       //1 // wait for one more time unit before evaluating output
       
-      actual = in1_16*in2_16;
+      actual = in1_12*in2_12;
       $strobe("Design Output: out=%d", design_out);
       $strobe("Actual Output: out =%d",actual);
 

@@ -1,4 +1,4 @@
-class RandomInputs#(int WIDTH = 8, int limit = 214738);
+class RandomInputs#(int WIDTH = 16, int limit = 214738);
   rand logic [WIDTH-1:0] in1;
   rand logic [WIDTH-1:0] in2;
 
@@ -24,7 +24,6 @@ endmodule
 
 module tb #(parameter WIDTH = 16)(if_multiplier.tb_side tbif);
   // Parameters
-  parameter limit = 100; // Set the limit for in1*in2
   parameter int seed = 12345; // Set the seed for randomization
   parameter int NUM_TESTS = 10; // Number of test iterations to run
   integer fd;

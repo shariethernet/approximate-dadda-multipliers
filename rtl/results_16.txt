@@ -1,1 +1,1 @@
-Average relative error over 10 tests: 1.22%
+Average relative error over 10 tests: 24.62%

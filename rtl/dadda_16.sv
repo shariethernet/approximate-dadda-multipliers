@@ -1,24 +1,3 @@
-module HA(
-    input wire a,
-    input wire b,
-    output wire sum,
-    output wire cout
-);
-assign sum = a^b;
-assign cout = a&b;
-endmodule
-
-module FA(
-    input wire a, 
-    input wire b, 
-    input wire cin,
-    output wire sum,
-    output wire cout
-);
-    assign sum = a^b^cin;
-    assign cout = (a&b) | (b&cin) | (cin&a);
-endmodule
-
 module dadda_16#(parameter WIDTH = 16)(if_multiplier.mul_side muif);
     logic [WIDTH-1:0][WIDTH-1:0] pp;
     //  Instantiate given HA, FA blocks to generate different stages 
