@@ -3,8 +3,8 @@ class RandomInputs#(int WIDTH = 8, int limit = 255);
   rand logic [WIDTH-1:0] in2;
 
   constraint c_limit { in1 * in2 < limit; }
-  constraint c_in1 { in1 >= 0; }
-  constraint c_in2 { in2 >= 0; }
+  constraint c_in1 { in1 > 0; }
+  constraint c_in2 { in2 > 0; }
 
   function void post_randomize();
     $display("Applying inputs: in1=%d, in2=%d", in1, in2);
@@ -26,7 +26,7 @@ module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
   // Parameters
   parameter limit = 100; // Set the limit for in1*in2
   parameter int seed = 12345; // Set the seed for randomization
-  parameter int NUM_TESTS = 10; // Number of test iterations to run
+  parameter int NUM_TESTS = 120; // Number of test iterations to run
   integer fd;
   RandomInputs random_inputs;
   real total_relative_error = 0;
@@ -41,6 +41,7 @@ module tb #(parameter WIDTH = 8)(if_multiplier.tb_side tbif);
     random_inputs = new();
     random_inputs.srandom(seed);
     for (int i = 0; i < NUM_TESTS; i++) begin // repeat the test multiple times
+      
       random_inputs.randomize();
       in1 = random_inputs.in1;
       in2 = random_inputs.in2;

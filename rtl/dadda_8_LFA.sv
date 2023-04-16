@@ -1,4 +1,3 @@
-
 module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     logic [0:WIDTH-1][WIDTH-1:0] pp_out;
     partial_product#(.WIDTH(WIDTH)) pp_inst(.in1(muif.in1),.in2(muif.in2),.out(pp_out));

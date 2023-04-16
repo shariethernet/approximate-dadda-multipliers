@@ -135,7 +135,17 @@ assign sum = a^b;
 assign cout = a&b;
 endmodule
 
-// Accurate FA
+
+module FA(
+    input wire a, 
+    input wire b, 
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+    assign sum = a^b^cin;
+    assign cout = (a&b) | (b&cin) | (cin&a);
+endmodule
 
 // Partial Product Generation
 module partial_product#(parameter WIDTH = 2)(
