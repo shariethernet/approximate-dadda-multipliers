@@ -7,3 +7,5 @@ transcript
 t/
 build*/
 fusesoc.conf
+*.vcd
+run.do

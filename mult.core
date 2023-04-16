@@ -6,10 +6,23 @@ filesets:
             - mult.tlv 
         file_type: TLVerilogSource
     
-    rtl:
+    rtl_lib:
         files:
             - rtl/m.sv
+            - rtl/cla_w.sv
         file_type: systemVerilogSource
+    
+    acc_da_8:
+        files:
+            - rtl/dadda_8.sv
+        file_type: systemVerilogSource
+    
+    acc_da_16:
+        files:
+            - rtl/dadda_16.sv
+        file_type: systemVerilogSource
+    
+    
     
     tb:
         files:
@@ -32,10 +45,10 @@ targets:
                     - "1_mult.sv"
         toplevel: [top]
     
-    synth:
+    s_dadda_8:
         default_tool : design_compiler
-        filesets: [rtl]
-        toplevel : [mfa]
+        filesets: [rtl_lib, acc_da_8]
+        toplevel : [dadda_8]
         tools:
           design_compiler: 
             script_dir: "/home/local/nu/shg/systolic_tlv/constraints"
