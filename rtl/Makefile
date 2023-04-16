@@ -30,7 +30,7 @@ APP_FA4 = app_fa4.sv
 
 ADDER_SELECT = $(APP_FA2)
 
-FILESET = $(DADDA_8_LS)
+FILESET = $(R_DADDA_6)
 
 LIB = work
 

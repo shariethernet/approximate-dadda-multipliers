@@ -82,8 +82,14 @@ module tb #(parameter WIDTH = 16)(if_multiplier.tb_side tbif);
     $display("Testbench finished");
     $display("Average relative error over %0d tests: %.2f%%", NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
     // Write the average relative error to a file
-    fd = $fopen("results_16.txt","w");
-    $fwrite(fd, "Average relative error over %0d tests: %.2f%%", NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
+    if ( $fopen("results.csv","w") ==0) begin 
+      fd = $fopen("results.csv","w");
+      $fwrite(fd, "WIDTH,filename,num_tests,avg_error\n");
+      $fwrite(fd, "%d,%s,%d,%d\n",WIDTH, __FILE__, NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
+    end else begin
+    fd = $fopen("results.csv","a");
+    $fwrite(fd, "%d,%s,%d,%d\n",WIDTH, __FILE__, NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
+    end
     $fclose(fd);
     $finish;
   end
