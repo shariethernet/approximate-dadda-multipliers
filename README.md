@@ -12,10 +12,10 @@ You can run synthesis using the makefile provided, and you can also run simulati
 
 ## Note
 
-- Simulation and synthesis can be performed only with simulators that support complete System Verilog support. 
+- Simulation and synthesis can be performed only with simulators that are sypport IEEE 1800-2017 System Verilog.  
 - We use Mentor QuestaSim for simulation and Synopsys Design Compiler for synthesis
 - It is easy to port to your choice of open source simulators by slight modifications to inferface related constructs
-
+- Makefile in `rtl/` uses some powershell specific commands, make sure to modify them to bash/zsh/csh/your choice of shell before running
 
 
 
