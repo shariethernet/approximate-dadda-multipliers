@@ -1,6 +1,6 @@
 set source_path "rtl/"
 set script_path "scripts/"
-set design "mfa"
+set design "dadda_8"
 
 proc create_dir {dir_name} {
   if {![file exists $dir_name]} {
@@ -18,7 +18,7 @@ source "$READ_SOURCES.tcl"
 current_design $design
 elaborate $design
 
-#source "/home/local/nu/shg/systolic_tlv/constraints/constraints_1.sdc"
+source "/home/local/nu/shg/systolic_tlv/constraints/constraints_1.sdc"
 compile
 #compile -ungroup_all -map_effort medium
 if {[shell_is_in_xg_mode]==0} {

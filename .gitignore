@@ -9,3 +9,5 @@ build*/
 fusesoc.conf
 *.vcd
 run.do
+run_*
+runs

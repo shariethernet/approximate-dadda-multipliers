@@ -17,17 +17,14 @@ set clock_ports [list \
 
 # IRQ Input ports
 set input_ports [list \
-    axi_reset_n \
-    s_axis_valid \
-    s_axis_data \
-    m_axis_ready\ 
+    muif.in1 \
+    muif.in2 \
     ]
 
 # IRQ Output ports
 set output_ports [list \
-    s_axis_ready \
-    m_axis_valid \
-    m_axis_data \
+    muif.out \
+    muif.overflow
 ]
 
 
