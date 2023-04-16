@@ -42,7 +42,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // Stage 4
     HA S4_HA1(pp_out[0][2], pp_out[1][1], st4out1, st4cout1);
-    FA S4_FA1(st3out1, pp_out[2][1], pp_out[1][0], st4out2, st4cout2);
+    FA S4_FA1(st3out1, pp_out[2][1], pp_out[3][0], st4out2, st4cout2);
     FA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
     FA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
     FA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);
