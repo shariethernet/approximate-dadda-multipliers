@@ -1,10 +1,10 @@
-class RandomInputs#(int WIDTH = 16, int limit = 214738);
-  rand logic [WIDTH-1:0] in1;
-  rand logic [WIDTH-1:0] in2;
+class RandomInputs#(int WIDTH = 16, int limit = 2147483647);
+  randc logic [WIDTH-1:0] in1;
+  randc logic [WIDTH-1:0] in2;
 
   constraint c_limit { in1 * in2 < limit; }
-  constraint c_in1 { in1 >= 0; }
-  constraint c_in2 { in2 >= 0; }
+  constraint c_in1 { in1 > 0; in1 < 65536;}
+  constraint c_in2 { in2 > 0; in2 < 65536;}
 
   function void post_randomize();
     $display("Applying inputs: in1=%d, in2=%d", in1, in2);
@@ -25,7 +25,7 @@ endmodule
 module tb #(parameter WIDTH = 16)(if_multiplier.tb_side tbif);
   // Parameters
   parameter int seed = 12345; // Set the seed for randomization
-  parameter int NUM_TESTS = 10; // Number of test iterations to run
+  parameter int NUM_TESTS = 100; // Number of test iterations to run
   integer fd;
   RandomInputs random_inputs;
   real total_relative_error = 0;
@@ -62,11 +62,11 @@ module tb #(parameter WIDTH = 16)(if_multiplier.tb_side tbif);
       $strobe("Design Output: out=%d", design_out);
       $strobe("Actual Output: out =%d",actual);
 
-      if ((( in1*in2) - design_out) < 0) begin
-      relative_error = (design_out - ( in1*in2))  / actual;
+      if (((actual) - design_out) < 0) begin
+      relative_error = (design_out - ( actual))  / actual;
       $strobe("here");
-      end else if ((( in1*in2) - design_out) >0) begin
-      relative_error = (( in1*in2) - design_out) / actual;
+      end else if ((( actual) - design_out) >0) begin
+      relative_error = (( actual) - design_out) / actual;
       $strobe("hereee");
       end else begin 
           relative_error = 0;
@@ -80,16 +80,10 @@ module tb #(parameter WIDTH = 16)(if_multiplier.tb_side tbif);
       #1;
     end
     $display("Testbench finished");
-    $display("Average relative error over %0d tests: %.2f%%", NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
+    $display("Average relative error over %0d tests: %f", NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
     // Write the average relative error to a file
-    if ( $fopen("results.csv","w") ==0) begin 
-      fd = $fopen("results.csv","w");
-      $fwrite(fd, "WIDTH,filename,num_tests,avg_error\n");
-      $fwrite(fd, "%d,%s,%d,%d\n",WIDTH, __FILE__, NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
-    end else begin
-    fd = $fopen("results.csv","a");
-    $fwrite(fd, "%d,%s,%d,%d\n",WIDTH, __FILE__, NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
-    end
+    fd = $fopen("results_16.txt","w");
+    $fwrite(fd, "Average relative error over %0d tests: %f", NUM_TESTS, (total_relative_error / NUM_TESTS) * 100);
     $fclose(fd);
     $finish;
   end

@@ -10,6 +10,11 @@ R_DADDA_6 = dadda_6.sv r_tb_6.sv
 R_DADDA_8 = dadda_8.sv r_tb_8.sv
 R_DADDA_16 = dadda_16.sv r_tb_16.sv
 
+DADDA_6_LFA = dadda_6_LFA.sv r_tb_6.sv 
+DADDA_6_LS =  dadda_6_LS.sv  r_tb_6.sv
+DADDA_6_LSB = dadda_6_LSB.sv r_tb_6.sv
+DADDA_6_MFA = dadda_6_MFA.sv r_tb_6.sv
+
 DADDA_8_LFA = dadda_8_LFA.sv r_tb_8.sv 
 DADDA_8_LS = dadda_8_LS.sv r_tb_8.sv
 DADDA_8_LSB = dadda_8_LSB.sv r_tb_8.sv
@@ -28,9 +33,9 @@ APP_FA3 = app_fa3.sv
 APP_FA4 = app_fa4.sv
 
 
-ADDER_SELECT = $(APP_FA2)
+ADDER_SELECT = $(APP_FA3)
 
-FILESET = $(R_DADDA_6)
+FILESET = $(DADDA_8_LSB)
 
 LIB = work
 

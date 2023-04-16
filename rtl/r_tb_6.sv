@@ -1,10 +1,10 @@
-class RandomInputs#(int WIDTH = 6, int limit = 2047);
+class RandomInputs#(int WIDTH = 6, int limit = 2040);
   rand logic [WIDTH-1:0] in1;
   rand logic [WIDTH-1:0] in2;
 
   constraint c_limit { in1 * in2 < limit; }
-  constraint c_in1 { in1 >= 0; }
-  constraint c_in2 { in2 >= 0; }
+  constraint c_in1 { in1 > 0; in1 <=63; }
+  constraint c_in2 { in2 > 0; in2 <= 63; }
 
   function void post_randomize();
     $display("Applying inputs: in1=%d, in2=%d", in1, in2);
@@ -25,7 +25,7 @@ endmodule
 module tb #(parameter WIDTH = 6)(if_multiplier.tb_side tbif);
   // Parameters
   parameter int seed = 12345; // Set the seed for randomization
-  parameter int NUM_TESTS = 10; // Number of test iterations to run
+  parameter int NUM_TESTS = 100; // Number of test iterations to run
   integer fd;
   RandomInputs random_inputs;
   real total_relative_error = 0;
