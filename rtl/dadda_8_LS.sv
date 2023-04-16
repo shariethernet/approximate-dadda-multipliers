@@ -42,17 +42,17 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // Stage 4
     HA S4_HA1(pp_out[0][2], pp_out[1][1], st4out1, st4cout1);
-    FA S4_FA1(st3out1, pp_out[2][1], pp_out[3][0], st4out2, st4cout2);
-    FA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
-    FA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
-    FA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);
-    FA S4_FA5(st3out5, st3cout4, st2cout10, st4out6, st4cout6);
-    FA S4_FA6(st3out6, st3cout5, st2cout11, st4out7, st4cout7);
-    FA S4_FA7(st3out7, st3cout6, st2cout12, st4out8, st4cout8);
-    FA S4_FA8(st3out8, st3cout7, st2cout13, st4out9, st4cout9);
-    FA S4_FA9(st3out9, st3cout8, st2cout14, st4out10, st4cout10);
-    FA S4_FA10(st3out10, st3cout9, pp_out[7][5], st4out11, st4cout11);
-    FA S4_FA11(pp_out[6][7], st3cout10, pp_out[7][6], st4out12, st4cout12);
+    AFA S4_FA1(st3out1, pp_out[2][1], pp_out[1][0], st4out2, st4cout2);
+    AFA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
+    AFA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
+    AFA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);
+    AFA S4_FA5(st3out5, st3cout4, st2cout10, st4out6, st4cout6);
+    AFA S4_FA6(st3out6, st3cout5, st2cout11, st4out7, st4cout7);
+    AFA S4_FA7(st3out7, st3cout6, st2cout12, st4out8, st4cout8);
+    AFA S4_FA8(st3out8, st3cout7, st2cout13, st4out9, st4cout9);
+    AFA S4_FA9(st3out9, st3cout8, st2cout14, st4out10, st4cout10);
+    AFA S4_FA10(st3out10, st3cout9, pp_out[7][5], st4out11, st4cout11);
+    AFA S4_FA11(pp_out[6][7], st3cout10, pp_out[7][6], st4out12, st4cout12);
 
     // 14 bit CLA
     parameter CLA_WIDTH = 16;

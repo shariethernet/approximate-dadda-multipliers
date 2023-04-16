@@ -14,19 +14,19 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     // Stage 2
     HA S2_HA1(pp_out[0][4], pp_out[1][3], st2out1, st2cout1);
     HA S2_HA2(pp_out[0][5], pp_out[1][4], st2out2, st2cout2);
-    FA S2_FA1(st1out1, pp_out[2][4], pp_out[3][3], st2out3, st2cout3);
-    FA S2_FA2(st1out2, st1cout1, st1out5, st2out4, st2cout4);
-    FA S2_FA3(st1out3, st1cout2, st1out6, st2out5, st2cout5);
-    FA S2_FA4(st1out4, st1cout3, pp_out[5][4], st2out6, st2cout6);
-    FA S2_FA5(pp_out[3][7], pp_out[4][6], st1cout4, st2out7, st2cout7);
-    FA S2_FA6(pp_out[4][7], pp_out[5][6], pp_out[6][5], st2out8, st2cout8);
+    AFA S2_FA1(st1out1, pp_out[2][4], pp_out[3][3], st2out3, st2cout3);
+    AFA S2_FA2(st1out2, st1cout1, st1out5, st2out4, st2cout4);
+    AFA S2_FA3(st1out3, st1cout2, st1out6, st2out5, st2cout5);
+    AFA S2_FA4(st1out4, st1cout3, pp_out[5][4], st2out6, st2cout6);
+    AFA S2_FA5(pp_out[3][7], pp_out[4][6], st1cout4, st2out7, st2cout7);
+    AFA S2_FA6(pp_out[4][7], pp_out[5][6], pp_out[6][5], st2out8, st2cout8);
     
-    FA S2_FA7(pp_out[2][3], pp_out[3][2], pp_out[4][1], st2out9, st2cout9);
-    FA S2_FA8(pp_out[4][2], pp_out[5][1], pp_out[6][0], st2out10, st2cout10);
-    FA S2_FA9(pp_out[5][2], pp_out[6][1], pp_out[7][0], st2out11, st2cout11);
-    FA S2_FA10(pp_out[6][2], pp_out[7][1], st1cout5, st2out12, st2cout12);
-    FA S2_FA11(pp_out[6][3], pp_out[7][2], st1cout6, st2out13, st2cout13);
-    FA S2_FA12(pp_out[5][5], pp_out[6][4], pp_out[7][3], st2out14, st2cout14);
+    AFA S2_FA7(pp_out[2][3], pp_out[3][2], pp_out[4][1], st2out9, st2cout9);
+    AFA S2_FA8(pp_out[4][2], pp_out[5][1], pp_out[6][0], st2out10, st2cout10);
+    AFA S2_FA9(pp_out[5][2], pp_out[6][1], pp_out[7][0], st2out11, st2cout11);
+    AFA S2_FA10(pp_out[6][2], pp_out[7][1], st1cout5, st2out12, st2cout12);
+    AFA S2_FA11(pp_out[6][3], pp_out[7][2], st1cout6, st2out13, st2cout13);
+    AFA S2_FA12(pp_out[5][5], pp_out[6][4], pp_out[7][3], st2out14, st2cout14);
 
     // Stage 3
     HA S3_HA1(pp_out[0][3], pp_out[1][2], st3out1, st3cout1);
@@ -42,7 +42,7 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // Stage 4
     HA S4_HA1(pp_out[0][2], pp_out[1][1], st4out1, st4cout1);
-    FA S4_FA1(st3out1, pp_out[2][1], pp_out[3][0], st4out2, st4cout2);
+    FA S4_FA1(st3out1, pp_out[2][1], pp_out[1][0], st4out2, st4cout2);
     FA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
     FA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
     FA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);

@@ -21,8 +21,8 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
     FA S2_FA5(pp_out[3][7], pp_out[4][6], st1cout4, st2out7, st2cout7);
     FA S2_FA6(pp_out[4][7], pp_out[5][6], pp_out[6][5], st2out8, st2cout8);
     
-    FA S2_FA7(pp_out[2][3], pp_out[3][2], pp_out[4][1], st2out9, st2cout9);
-    FA S2_FA8(pp_out[4][2], pp_out[5][1], pp_out[6][0], st2out10, st2cout10);
+    AFA S2_FA7(pp_out[2][3], pp_out[3][2], pp_out[4][1], st2out9, st2cout9);
+    AFA S2_FA8(pp_out[4][2], pp_out[5][1], pp_out[6][0], st2out10, st2cout10);
     FA S2_FA9(pp_out[5][2], pp_out[6][1], pp_out[7][0], st2out11, st2cout11);
     FA S2_FA10(pp_out[6][2], pp_out[7][1], st1cout5, st2out12, st2cout12);
     FA S2_FA11(pp_out[6][3], pp_out[7][2], st1cout6, st2out13, st2cout13);
@@ -30,9 +30,9 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // Stage 3
     HA S3_HA1(pp_out[0][3], pp_out[1][2], st3out1, st3cout1);
-    FA S3_FA1(st2out1, pp_out[2][2], pp_out[3][1], st3out2, st3cout2);
-    FA S3_FA2(st2out2, st2cout1, st2out9, st3out3, st3cout3);
-    FA S3_FA3(st2out3, st2cout2, st2out10, st3out4, st3cout4);
+    AFA S3_FA1(st2out1, pp_out[2][2], pp_out[3][1], st3out2, st3cout2);
+    AFA S3_FA2(st2out2, st2cout1, st2out9, st3out3, st3cout3);
+    AFA S3_FA3(st2out3, st2cout2, st2out10, st3out4, st3cout4);
     FA S3_FA4(st2out4, st2cout3, st2out11, st3out5, st3cout5);
     FA S3_FA5(st2out5, st2cout4, st2out12, st3out6, st3cout6);
     FA S3_FA6(st2out6, st2cout5, st2out13, st3out7, st3cout7);
@@ -42,10 +42,10 @@ module dadda_8#(parameter WIDTH = 8)(if_multiplier.mul_side muif);
 
     // Stage 4
     HA S4_HA1(pp_out[0][2], pp_out[1][1], st4out1, st4cout1);
-    FA S4_FA1(st3out1, pp_out[2][1], pp_out[3][0], st4out2, st4cout2);
-    FA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
-    FA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
-    FA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);
+    AFA S4_FA1(st3out1, pp_out[2][1], pp_out[1][0], st4out2, st4cout2);
+    AFA S4_FA2(st3out2, st3cout1, pp_out[4][0], st4out3, st4cout3);
+    AFA S4_FA3(st3out3, st3cout2, pp_out[5][0], st4out4, st4cout4);
+    AFA S4_FA4(st3out4, st3cout3, st2cout9, st4out5, st4cout5);
     FA S4_FA5(st3out5, st3cout4, st2cout10, st4out6, st4cout6);
     FA S4_FA6(st3out6, st3cout5, st2cout11, st4out7, st4cout7);
     FA S4_FA7(st3out7, st3cout6, st2cout12, st4out8, st4cout8);
