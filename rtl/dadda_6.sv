@@ -18,7 +18,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     FA S2_FA2(st1out2, st1cout1, st1out5, st2out3, st2cout3);
     FA S2_FA3(st1out3, st1cout2, st1out6, st2out4, st2cout4);
     FA S2_FA4(st1out4, st1cout3, pp_out[5][2], st2out5, st2cout5);
-    FA S2_FA5(pp_out[3][5], st2cout4, pp_out[4][4], st2out6, st2cout6);
+    FA S2_FA5(pp_out[3][5], st1cout4, pp_out[4][4], st2out6, st2cout6);
 
     // Stage 3
     HA S3_HA1(pp_out[0][2], pp_out[1][1], st3out1, st3cout1);
