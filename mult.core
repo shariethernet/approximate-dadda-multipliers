@@ -3,7 +3,7 @@ name : ::mult:0
 filesets:
     tlv_rtl:
         files:
-            - mult.tlv 
+            - tlv/mult.tlv 
         file_type: TLVerilogSource
     
     rtl_lib:
