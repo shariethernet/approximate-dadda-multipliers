@@ -28,7 +28,7 @@ module dadda_6#(parameter WIDTH = 6)(if_multiplier.mul_side muif);
     FA S3_FA4(st2out4, st2cout3, st1cout5, st3out5, st3cout5);
     FA S3_FA5(st2out5, st2cout4, st1cout6, st3out6, st3cout6);
     FA S3_FA6(st2out6, st2cout5, pp_out[5][3], st3out7, st3cout7);
-    FA S3_FA7(pp_out[4][5], st1cout6, pp_out[5][4], st3out8, st3cout8);
+    FA S3_FA7(pp_out[4][5], st2cout6, pp_out[5][4], st3out8, st3cout8);
     
     parameter CLA_WIDTH = 11;
     wire [CLA_WIDTH-1:0] in1;
